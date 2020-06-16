@@ -27,11 +27,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework'
 ]
-
+REST_FRAMEWORK={
+    "DEFAULT_AUTHENTICATION_CLASSES":('knox.auth.TokenAuthentication',)
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     ## to include the cors middleware
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -106,3 +109,4 @@ MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ## include the cors headers whitelist
+CORS_ORIGIN_WHITELIST='http://locahost:3000',
