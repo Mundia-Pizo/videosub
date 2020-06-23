@@ -11,6 +11,13 @@ class CourseAPI(generics.ListAPIView):
     permission_classes=[
         permissions.AllowAny
     ]
+class CourseDetailAPIView(generics.RetrieveAPIView):
+    serializer_class=CourseSerializer
+    queryset= Course.objects.all()
+    permission_classes=[
+        permissions.AllowAny
+    ]
+
 
 class LessonAPI(generics.ListAPIView):
     serializer_class=LessonSerializer
